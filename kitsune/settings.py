@@ -1103,4 +1103,4 @@ DMS_UPDATE_L10N_CONTRIBUTOR_METRICS = config('DMS_UPDATE_L10N_CONTRIBUTOR_METRIC
 
 PROD_DETAILS_CACHE_NAME = 'product-details'
 PROD_DETAILS_STORAGE = config('PROD_DETAILS_STORAGE',
-                              default='product_details.storage.PDDatabaseStorage')
+                              default='product_details.storage.PDFileStorage')
