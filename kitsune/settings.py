@@ -53,22 +53,25 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': config('DATABASE_URL' if not READ_ONLY else 'DATABASE_READ_ONLY_URL',
                       cast=dj_database_url.parse),
-    # The read only database can be the default database with a user with read
-    # permissions only.
-    'read_only': config('DATABASE_READ_ONLY_URL', cast=dj_database_url.parse),
 }
 DATABASES['default']['OPTIONS'] = {'init_command': 'SET storage_engine=InnoDB'}
-DATABASES['read_only']['OPTIONS'] = {'init_command': 'SET storage_engine=InnoDB'}
-
+SLAVE_DATABASES = []
 DATABASE_ROUTERS = ('multidb.PinningMasterSlaveRouter',)
 
-# Add read-only databases here. The database can be the same as the `default`
-# database but with a user with read permissions only.
-SLAVE_DATABASES = [
-    'read_only',
-]
+DATABASE_READ_ONLY_URL = config('DATABASE_READ_ONLY_URL', default=None)
+if DATABASE_READ_ONLY_URL:
+    # The read only database can be the default database with a user with read
+    # permissions only.
+    DATABASES['read_only'] = dj_database_url.parse(DATABASE_READ_ONLY_URL)
+    DATABASES['read_only']['OPTIONS'] = {'init_command': 'SET storage_engine=InnoDB'}
 
-MULTIDB_PINNING_SECONDS = config('MULTIDB_PINNING_SECONDS', default=5, cast=int)
+    # Add read-only databases here. The database can be the same as the `default`
+    # database but with a user with read permissions only.
+    SLAVE_DATABASES = [
+        'read_only',
+    ]
+
+    MULTIDB_PINNING_SECONDS = config('MULTIDB_PINNING_SECONDS', default=5, cast=int)
 
 
 # Cache Settings

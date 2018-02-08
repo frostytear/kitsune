@@ -8,8 +8,9 @@ amqplib==1.0.2 \
     --hash=sha256:843d69b681a60afd21fbf50f310404ec67fcdf9d13dfcf6e9d41f3b456217e5b
 anyjson==0.3.3 \
     --hash=sha256:37812d863c9ad3e35c0734c42e0bf0320ce8c3bed82cd20ad54cb34d158157ba
-Babel==2.0 \
-    --hash=sha256:44988df191123065af9857eca68e9151526a931c12659ca29904e4f11de7ec1b
+Babel==2.5.3 \
+    --hash=sha256:ad209a68d7162c4cff4b29cdebe3dec4cef75492df501b0049a9433c96ce6f80 \
+    --hash=sha256:8ce4cb6fdd4393edd323227cba3a077bceb2a6ce5201c902c65e730046f41f14
 billiard==3.3.0.9 \
     --hash=sha256:7336ec59b8d0a132a1ee9f166a063d44a5e7f2d2fe15f79fbcedda583bbd61c1
 https://github.com/jsocol/bleach/archive/ab7c8b3f0a4c169b94da3248dfd60d6fc33b263c.tar.gz#egg=bleach==1.2.1 \
